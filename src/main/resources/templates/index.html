@@ -1,79 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>HW Registration</title>
 
     <link rel="stylesheet" href="/webjars/foundation/6.0.3/dist/foundation.min.css"/>
 </head>
-<body>
 
-<form>
-    <div class="row">
-        <div class="medium-8 medium-centered columns" style="padding-top: 10%">
-            <fieldset class="fieldset">
-                <legend>User Registration</legend>
-                <div class="row">
-                    <div class="medium-6 columns">
-                        <label>First Name
-                            <input type="text"/>
-                        </label>
-                    </div>
-                    <div class="medium-6 columns">
-                        <label>Last Name
-                            <input type="text"/>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-12 columns">
-                        <label>Address 1
-                            <input type="text"/>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-12 columns">
-                        <label>Address 2
-                            <input type="text"/>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-6 columns">
-                        <label>City
-                            <input type="text"/>
-                        </label>
-                    </div>
-                    <div class="medium-6 columns">
-                        <label>State
-                            <select>
-                                <option value="MI">Michigan</option>
-                                <option value="SC">South Carolina</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-6 columns">
-                        <label>Zip Code
-                            <input type="text"/>
-                        </label>
-                    </div>
-                    <div class="medium-6 columns">
-                        <label>Country
-                            <select>
-                                <option value="USA">United State</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-</form>
+<body ng-app="HWRegistrationApp">
 
-<script src="/webjars/foundation/6.0.3/dist/foundation.js"></script>
+<div ng-view=""></div>
+
+<script type="text/javascript" src="/webjars/angularjs/1.4.8/angular.js"></script>
+<script type="text/javascript" src="/webjars/angularjs/1.4.8/angular-resource.js"></script>
+<script type="text/javascript" src="/webjars/angularjs/1.4.8/angular-route.js"></script>
+<script type="text/javascript" src="/webjars/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript" src="/webjars/foundation/6.0.3/dist/foundation.js"></script>
+
+<script type="text/javascript" th:src="@{/app/app.js}" src="../static/app/app.js"></script>
+<script type="text/javascript" th:src="@{/app/components/registration/registrationController.js}" src="../static/app/components/registration/registrationController.js"></script>
+<script type="text/javascript" th:src="@{/app/components/registration/registrationService.js}" src="../static/app/components/registration/registrationService.js"></script>
 
 </body>
 </html>

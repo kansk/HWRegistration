@@ -1,0 +1,70 @@
+<div ng-controller="RegistrationCtrl">
+    <form data-abide="">
+
+        <div class="row">
+            <div class="medium-8 medium-centered columns" style="padding-top: 10%">
+                <fieldset class="fieldset">
+                    <legend>User Registration</legend>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <label>First Name <small>required</small>
+                                <input id="firstName" type="text" required="" ng-model="registration.person.firstName"/>
+                            </label>
+                        </div>
+                        <div class="medium-6 columns">
+                            <label>Last Name <small>required</small>
+                                <input id="lastName" type="text" required="" ng-model="registration.person.lastName"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-12 columns">
+                            <label>Address 1 <small>required</small>
+                                <input id="address.address1" type="text" required="" ng-model="registration.address.address1"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-12 columns">
+                            <label>Address 2
+                                <input id="address.address2" type="text" ng-model="registration.address.address2"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <label>City <small>required</small>
+                                <input id="address.city" type="text" required="" ng-model="registration.address.city"/>
+                            </label>
+                        </div>
+                        <div class="medium-6 columns">
+                            <label>State <small>required</small>
+                                <select id="address.state" required="" ng-model="registration.address.state">
+                                    <option value="MI">Michigan</option>
+                                    <option value="SC">South Carolina</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <label>Zip Code <small>required</small>
+                                <input id="address.zipCode" type="text" required="" ng-model="registration.address.zipCode"/>
+                            </label>
+                        </div>
+                        <div class="medium-6 columns">
+                            <label>Country <small>required</small>
+                                <select id="address.country" required="" ng-model="registration.address.country">
+                                    <option value="USA">United States</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input id="registrationSubmit" type="submit" class="button success" ng-click="saveRegistration(registration)">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+</div>
