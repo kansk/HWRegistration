@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -37,9 +38,11 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.POST)
     public void saveRegistration(@Valid @RequestBody Registration registration) {
         AddressEntity addressEntity = modelMapper.map(registration.getAddress(), AddressEntity.class);
+        addressEntity.setCreateDate(new Date());
         addressRepository.save(addressEntity);
 
         PersonEntity personEntity = modelMapper.map(registration.getPerson(), PersonEntity.class);
+        personEntity.setCreateDate(new Date());
         personEntity.setAddress(addressEntity);
         personRepository.save(personEntity);
     }

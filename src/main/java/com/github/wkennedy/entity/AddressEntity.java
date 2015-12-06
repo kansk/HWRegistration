@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class AddressEntity {
@@ -18,6 +19,7 @@ public class AddressEntity {
     private String state;
     private String zipCode;
     private String country;
+    private Date createDate;
 
     public AddressEntity() {
     }
@@ -83,6 +85,14 @@ public class AddressEntity {
         this.country = country;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,6 +132,7 @@ public class AddressEntity {
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", country='" + country + '\'' +
+                ", createDate=" + createDate +
                 '}';
     }
 }

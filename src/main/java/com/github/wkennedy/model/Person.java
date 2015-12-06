@@ -1,23 +1,24 @@
 package com.github.wkennedy.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.github.wkennedy.util.DateSerializer;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 2758171946686838500L;
 
-    @NotNull
-    @Min(1)
-    @Max(255)
     private String firstName;
-
-    @NotNull
-    @Min(1)
-    @Max(255)
     private String lastName;
+    @JsonSerialize(using = DateSerializer.class)
+//    @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
+    private Date createDate;
 
     public String getFirstName() {
         return firstName;
@@ -35,6 +36,14 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,7 +53,6 @@ public class Person implements Serializable {
 
         if (!firstName.equals(person.firstName)) return false;
         return lastName.equals(person.lastName);
-
     }
 
     @Override
@@ -59,6 +67,7 @@ public class Person implements Serializable {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", createDate=" + createDate +
                 '}';
     }
 }

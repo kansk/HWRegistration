@@ -7,12 +7,13 @@ reportControllers.controller('ReportCtrl', ['$scope', '$q', 'reportService', 'DT
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers')
             .withDisplayLength(2)
-            .withDOM('pitrfl');
-        vm.dtColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(0),
-            DTColumnDefBuilder.newColumnDef(1).notVisible(),
-            DTColumnDefBuilder.newColumnDef(2).notSortable()
-        ];
+            .withDOM('pitrfl')
+            .withOption('order', [8, 'desc']);
+        //vm.dtColumnDefs = [
+        //    DTColumnDefBuilder.newColumnDef(0),
+        //    DTColumnDefBuilder.newColumnDef(1).notVisible(),
+        //    DTColumnDefBuilder.newColumnDef(2).notSortable()
+        //];
 
         reportService.getReport().then(function(response) {
             $scope.registrations = response.data;

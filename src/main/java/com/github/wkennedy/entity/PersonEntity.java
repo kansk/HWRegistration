@@ -1,6 +1,7 @@
 package com.github.wkennedy.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class PersonEntity {
@@ -11,6 +12,7 @@ public class PersonEntity {
 
     private String firstName;
     private String lastName;
+    private Date createDate;
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ADDRESS")
@@ -52,6 +54,14 @@ public class PersonEntity {
         this.address = address;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +89,7 @@ public class PersonEntity {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", createDate=" + createDate +
                 ", address=" + address +
                 '}';
     }
