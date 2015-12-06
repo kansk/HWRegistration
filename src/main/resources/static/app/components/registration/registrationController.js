@@ -6,9 +6,14 @@ registrationControllers.controller('RegistrationCtrl', ['$scope', '$q', 'registr
         $scope.registration = {};
 
         $scope.saveRegistration = function(registration) {
+            $scope.errors = {};
             console.log($scope.registration);
-            registrationService.save($scope.registration).then(function(data) {
+            registrationService.save($scope.registration).then(function(success) {
                 console.debug("Registration Saved")
+            },function(error) {
+                console.log("error in controller");
+                console.log(error);
+                $scope.errors.api = error.data.errors[0].code;
             });
         }
     }]);

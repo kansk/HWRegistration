@@ -1,0 +1,30 @@
+<div>
+    <div class="row" style="padding-top: 5%">
+        <table id="reportTable" datatable="ng" dt-options="HWRegistrationApp.dtOptions" dt-column-defs="HWRegistrationApp.dtColumnDefs">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Country</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="registration in registrations">
+                <td>{{registration.person.firstName}}</td>
+                <td>{{registration.person.lastName}}</td>
+                <td>{{registration.address.address1}}</td>
+                <td>{{registration.address.address2}}</td>
+                <td>{{registration.address.city}}</td>
+                <td>{{registration.address.state}}</td>
+                <td>{{registration.address.zipCode}}</td>
+                <td>{{registration.address.country}}</td>
+                <td>TODO</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -2,15 +2,20 @@ package com.github.wkennedy.controller;
 
 import com.github.wkennedy.entity.AddressEntity;
 import com.github.wkennedy.entity.PersonEntity;
+import com.github.wkennedy.model.Address;
+import com.github.wkennedy.model.Person;
 import com.github.wkennedy.model.Registration;
 import com.github.wkennedy.repository.AddressRepository;
 import com.github.wkennedy.repository.PersonRepository;
+import com.github.wkennedy.validator.RegistrationValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/register")
@@ -24,13 +29,34 @@ public class RegistrationController {
     @Autowired
     private AddressRepository addressRepository;
 
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(new RegistrationValidator());
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public void saveRegistration(@RequestBody Registration registration) {
+    public void saveRegistration(@Valid @RequestBody Registration registration) {
         AddressEntity addressEntity = modelMapper.map(registration.getAddress(), AddressEntity.class);
         addressRepository.save(addressEntity);
 
         PersonEntity personEntity = modelMapper.map(registration.getPerson(), PersonEntity.class);
         personEntity.setAddress(addressEntity);
         personRepository.save(personEntity);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Registration> getRegistrations() {
+        Iterable<PersonEntity> personEntities = personRepository.findAll();
+        List<Registration> registrations = new ArrayList<>();
+        for (PersonEntity personEntity : personEntities) {
+            Registration registration = new Registration();
+            Person person = modelMapper.map(personEntity, Person.class);
+            registration.setPerson(person);
+            Address address = modelMapper.map(personEntity.getAddress(), Address.class);
+            registration.setAddress(address);
+            registrations.add(registration);
+        }
+
+        return registrations;
     }
 }

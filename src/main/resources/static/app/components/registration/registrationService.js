@@ -8,7 +8,7 @@ registrationServices.factory('registrationService', ['$http', '$q',
             save: function (registration) {
                 console.log(registration);
                 return $http.post('/register', JSON.stringify(registration), config)
-                    .then(function (response) {
+                    .success(function (response) {
                         return response.data
                     });
             }

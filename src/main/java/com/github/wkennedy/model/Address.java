@@ -1,16 +1,40 @@
 package com.github.wkennedy.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 3691626548025937639L;
 
+    @NotNull
+    @Min(1)
+    @Max(255)
     private String address1;
+
+    @Max(255)
     private String address2;
+
+    @NotNull
+    @Min(1)
+    @Max(255)
     private String city;
+
+    @NotNull
+    @Min(2)
+    @Max(2)
     private String state;
+
+    @NotNull
+    @Min(5)
+    @Max(9)
     private String zipCode;
+
+    @NotNull
+    @Min(3)
+    @Max(3)
     private String country;
 
     public String getAddress1() {

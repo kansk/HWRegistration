@@ -1,12 +1,22 @@
 package com.github.wkennedy.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 2758171946686838500L;
 
+    @NotNull
+    @Min(1)
+    @Max(255)
     private String firstName;
+
+    @NotNull
+    @Min(1)
+    @Max(255)
     private String lastName;
 
     public String getFirstName() {

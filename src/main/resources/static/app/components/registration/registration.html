@@ -1,40 +1,42 @@
-<div ng-controller="RegistrationCtrl">
-    <form data-abide="">
-
+<div>
+    <form name="registrationForm" novalidate="novalidate">
         <div class="row">
-            <div class="medium-8 medium-centered columns" style="padding-top: 10%">
+            <div class="medium-8 medium-centered columns">
                 <fieldset class="fieldset">
                     <legend>User Registration</legend>
+                    <div ng-show="errors.api">
+                        <span class="error">{{ errors.api }}</span>
+                    </div>
                     <div class="row">
                         <div class="medium-6 columns">
                             <label>First Name <small>required</small>
-                                <input id="firstName" type="text" required="" ng-model="registration.person.firstName"/>
+                                <input id="firstName" type="text" ng-model="registration.person.firstName"  />
                             </label>
                         </div>
                         <div class="medium-6 columns">
                             <label>Last Name <small>required</small>
-                                <input id="lastName" type="text" required="" ng-model="registration.person.lastName"/>
+                                <input id="lastName" type="text" required="" ng-model="registration.person.lastName" ng-minlength="1" ng-maxlength="255"/>
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="medium-12 columns">
                             <label>Address 1 <small>required</small>
-                                <input id="address.address1" type="text" required="" ng-model="registration.address.address1"/>
+                                <input id="address.address1" type="text" required="" ng-model="registration.address.address1" ng-minlength="1" ng-maxlength="255"/>
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="medium-12 columns">
                             <label>Address 2
-                                <input id="address.address2" type="text" ng-model="registration.address.address2"/>
+                                <input id="address.address2" type="text" ng-model="registration.address.address2" ng-maxlength="255"/>
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="medium-6 columns">
                             <label>City <small>required</small>
-                                <input id="address.city" type="text" required="" ng-model="registration.address.city"/>
+                                <input id="address.city" type="text" required="" ng-model="registration.address.city" ng-minlength="1" ng-maxlength="255"/>
                             </label>
                         </div>
                         <div class="medium-6 columns">
@@ -49,7 +51,7 @@
                     <div class="row">
                         <div class="medium-6 columns">
                             <label>Zip Code <small>required</small>
-                                <input id="address.zipCode" type="text" required="" ng-model="registration.address.zipCode"/>
+                                <input id="address.zipCode" type="text" required="" ng-model="registration.address.zipCode" ng-minlength="5" ng-maxlength="10" ng-pattern="/^[0-9]{5}(?:-[0-9]{4})?$/"/>
                             </label>
                         </div>
                         <div class="medium-6 columns">
@@ -61,7 +63,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <input id="registrationSubmit" style="float:right" type="submit" class="button success right" ng-click="saveRegistration(registration)">
+                        <input id="registrationSubmit" style="float:right" type="submit" class="button success right" ng-disabled="registrationForm.$invalid" ng-click="saveRegistration(registration)">
                     </div>
                 </fieldset>
             </div>
