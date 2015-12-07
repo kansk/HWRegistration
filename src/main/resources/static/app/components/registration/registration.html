@@ -11,7 +11,7 @@
                         <div class="medium-6 columns">
                             <label>First Name
                                 <small>required</small>
-                                <input id="firstName" type="text" ng-model="registration.person.firstName"/>
+                                <input id="firstName" type="text" ng-model="registration.person.firstName" required="" ng-minlength="1" ng-maxlength="255"/>
                             </label>
                         </div>
                         <div class="medium-6 columns">
@@ -139,7 +139,6 @@
                         </div>
                         <div class="row">
                             <div class="large-centered columns">
-                                <!--<input id="cancelSubmit"  style="float:left" class="button left" ng-click="hideModal()">-->
                                 <input id="registrationSubmit" type="submit" class="large button"
                                        ng-disabled="registrationForm.$invalid"
                                        ng-click="saveRegistration(registration)"/>
