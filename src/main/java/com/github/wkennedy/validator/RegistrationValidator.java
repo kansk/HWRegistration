@@ -58,6 +58,9 @@ public class RegistrationValidator implements Validator {
         } else if (address.getCountry().isEmpty()) {
             errors.reject("Country must be provided.");
             return;
+        } else if (!address.getCountry().equals("US")) {
+            errors.reject("Country must be provided.");
+            return;
         } else if (address.getState().isEmpty()) {
             errors.reject("State must be provided.");
             return;
