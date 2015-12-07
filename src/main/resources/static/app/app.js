@@ -9,7 +9,8 @@ var HWRegistrationApp = angular.module('HWRegistrationApp', [
     'registrationControllers',
     'registrationServices',
     'reportControllers',
-    'reportServices'
+    'reportServices',
+    'confirmationControllers'
 ]).run([
     'validator',
     'foundation5ElementModifier',
@@ -36,6 +37,9 @@ HWRegistrationApp.config(['$routeProvider',
             }).when('/report', {
                 templateUrl: 'app/components/report/report.html',
                 controller: 'ReportCtrl'
+            }).when('/confirmation', {
+                templateUrl: 'app/components/confirmation/confirmation.html',
+                controller: 'ConfirmationCtrl'
             }).
             otherwise({redirectTo: "/"});
     }]);
