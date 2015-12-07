@@ -22,12 +22,14 @@ This results in a WAR file which you can then deploy to your favorite Java appli
   - AngularJS
   - DataTables
   - Thymeleaf
+
 #### Middle tier components
   - Spring Boot
   - Spring MVC
   - Spring Data
   - JPA/Hibernate
   - JUnit
+
 #### Persistence
   - MySQL
   - H2
