@@ -9,11 +9,6 @@ reportControllers.controller('ReportCtrl', ['$scope', '$q', '$location', 'report
             .withDisplayLength(2)
             .withDOM('pitrfl')
             .withOption('order', [8, 'desc']);
-        //vm.dtColumnDefs = [
-        //    DTColumnDefBuilder.newColumnDef(0),
-        //    DTColumnDefBuilder.newColumnDef(1).notVisible(),
-        //    DTColumnDefBuilder.newColumnDef(2).notSortable()
-        //];
 
         reportService.getReport().then(function(response) {
             $scope.registrations = response.data;
@@ -27,4 +22,3 @@ reportControllers.controller('ReportCtrl', ['$scope', '$q', '$location', 'report
         }
 
     }]);
-

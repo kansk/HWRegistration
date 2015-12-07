@@ -2,11 +2,10 @@
 
 var reportServices = angular.module('reportServices', ['ngResource']);
 
-reportServices.factory('reportService', ['$http', '$q',
-    function ($http, $q) {
+reportServices.factory('reportService', ['$http',
+    function ($http) {
         return {
-            getReport: function (registration) {
-                console.log(registration);
+            getReport: function () {
                 return $http.get('/register', config)
                     .success(function (response) {
                         return response
