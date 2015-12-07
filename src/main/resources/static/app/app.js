@@ -18,6 +18,16 @@ var HWRegistrationApp = angular.module('HWRegistrationApp', [
         validator.setDefaultElementModifier(foundation5ElementModifier.key);
     }]);
 
+angular.module('jcs-autoValidate')
+    .run([
+        'defaultErrorMessageResolver',
+        function (defaultErrorMessageResolver) {
+            defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
+                errorMessages['zipCodeErrorMessage'] = 'Enter a zip code in the form "12345" or "12345-6789"';
+            });
+        }
+    ]);
+
 var config = {
     headers: {
         'Accept': 'application/json;version=1',

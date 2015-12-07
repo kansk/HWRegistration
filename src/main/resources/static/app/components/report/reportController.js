@@ -1,7 +1,7 @@
 var reportControllers = angular.module('reportControllers', []);
 
-reportControllers.controller('ReportCtrl', ['$scope', '$q', 'reportService', 'DTOptionsBuilder', 'DTColumnDefBuilder',
-    function($scope, $q, reportService, DTOptionsBuilder, DTColumnDefBuilder) {
+reportControllers.controller('ReportCtrl', ['$scope', '$q', '$location', 'reportService', 'DTOptionsBuilder', 'DTColumnDefBuilder',
+    function($scope, $q, $location, reportService, DTOptionsBuilder, DTColumnDefBuilder) {
 
         var vm = this;
         vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -18,6 +18,13 @@ reportControllers.controller('ReportCtrl', ['$scope', '$q', 'reportService', 'DT
         reportService.getReport().then(function(response) {
             $scope.registrations = response.data;
         });
+
+        $scope.deleteRegistrations = function() {
+            reportService.deleteRegistrations().then(function(success) {
+                console.debug("Registrations Deleted");
+                $location.path('/registration');
+            });
+        }
 
     }]);
 

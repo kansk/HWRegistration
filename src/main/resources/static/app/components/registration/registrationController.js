@@ -21,4 +21,5 @@ registrationControllers.controller('RegistrationCtrl', ['$scope', '$q', '$locati
             });
             $scope.modalShown = false;
         };
+
     }]);

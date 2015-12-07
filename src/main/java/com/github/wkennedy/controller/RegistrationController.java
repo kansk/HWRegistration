@@ -62,4 +62,10 @@ public class RegistrationController {
 
         return registrations;
     }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteRegistrations() {
+        personRepository.deleteAll();
+    }
+
 }

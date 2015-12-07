@@ -11,6 +11,12 @@ reportServices.factory('reportService', ['$http', '$q',
                     .success(function (response) {
                         return response
                     });
+            },
+            deleteRegistrations: function () {
+                return $http.delete('/register', config)
+                    .success(function (response) {
+                        return response
+                    });
             }
         };
     }
